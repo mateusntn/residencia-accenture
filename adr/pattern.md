@@ -13,16 +13,8 @@
 
 <br>
 
-- Cada nova funcionalidade deve ser commitada.  
+- Cada nova funcionalidade deve ser commitada.
+<br> 
+- Não commitar código com erro.
 <br>
-- Cada um faz commits na sua branch.  
-
-    - Produtos - "Products"  
-
-    - Login - "Login"  
-
-    - Carrinho - "Cart"  
-
-    - Pagamento - "Payment"  
-
-    - Sobre - "About" 
+- Cada página tem sua branch.
