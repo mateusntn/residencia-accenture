@@ -25,6 +25,7 @@ body.my-login-page {
 
 .my-login-page .card-wrapper {
     width: 400px;
+    margin-left: auto;
 }
 
 .my-login-page .card {
@@ -79,9 +80,20 @@ body.my-login-page {
 }
 
 .btn:hover {
-    background-color: #6E00F5
+    background-color: #6E00F5;
+}
+
+.btn:focus {
+    background-color: #6E00F5;
 }
 
 .link {
     color: #6e00f5;
 }
+
+
+/* .logo {
+    width: 400px;
+    height: 200px;
+    margin: 0;
+} */
