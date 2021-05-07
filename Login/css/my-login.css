@@ -33,7 +33,7 @@ body.my-login-page {
     width: 550px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     
 }
 
