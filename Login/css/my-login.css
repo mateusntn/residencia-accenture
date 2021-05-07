@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+body {
+    background: url(../image/triangulo_login.png) no-repeat;
+}
+
 body.my-login-page {
     background-color: #f7f9fb;
     font-size: 14px;
@@ -24,8 +28,13 @@ body.my-login-page {
 }
 
 .my-login-page .card-wrapper {
-    width: 400px;
-    margin-left: auto;
+    position: absolute;
+    right: 150px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
 }
 
 .my-login-page .card {
@@ -35,10 +44,17 @@ body.my-login-page {
 
 .my-login-page .card.fat {
     padding: 10px;
+    height: 500px;
+    width: 600px;
 }
 
 .my-login-page .card .card-title {
     margin-bottom: 30px;
+    font-size: 35px;
+}
+
+.label-title{
+    font-size: 20px;
 }
 
 .my-login-page .form-control {
@@ -92,8 +108,3 @@ body.my-login-page {
 }
 
 
-/* .logo {
-    width: 400px;
-    height: 200px;
-    margin: 0;
-} */
