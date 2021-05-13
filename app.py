@@ -1,21 +1,19 @@
-from flask import Flask, render_template, request
-from flask_mysqldb import MySQL
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
 import yaml
 
 app = Flask(__name__)
 
 
 # Configure DB
-db = yaml.load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
-app.config['MYSQL_CURSORCLASS'] = "DictCursor"
-mysql = MySQL(app)
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:doninha20@localhost/mydb"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 
-   
+
+
 
 @app.route('/')
 def index(): 
@@ -45,9 +43,10 @@ def project_id(id):
     return 'Projeto id'
 
 
-@app.route('/new_project')
+@app.route('/new_project', methods=['GET', 'POST'])
 def new_project():
-    return 'novo projeto'
+    
+    return render_template ('/index.html')
 
 
 @app.route('/alocation')
