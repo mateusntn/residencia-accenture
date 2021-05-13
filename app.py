@@ -40,8 +40,8 @@ def projects():
     return 'Projetos'
 
 
-@app.route('/projects/:id')
-def project_id():
+@app.route('/projects/<int:id>')
+def project_id(id):
     return 'Projeto id'
 
 
