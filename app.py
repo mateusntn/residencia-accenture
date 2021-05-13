@@ -11,7 +11,24 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+class Projeto(db.Model):
+    __tablename__ = "projetos"
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(45), nullable=False, index=True)
+    custoPrevisto = db.Column(db.Float, nullable=True)
+    area = db.Column(db.String(45), nullable=True, index=True)
+    descricao = db.Column(db.String(500), nullable=True, index=True)
+    otherCost = db.Column(db.Float, nullable=True, index=True)
+    hardware = db.Column(db.Float, nullable=True, index=True)
+    licenca = db.Column(db.Float, nullable=True, index=True)
+    duracao = db.Column(db.String(45), nullable=True, index=True)
+    status = db.Column(db.String(45), nullable=True, index=True)
+    seatCharge = db.Column(db.Float, nullable=True, index=True)
+    nomeEmpresa = db.Column(db.String(45), nullable=True, index=True)
 
+
+def __str__(self):
+    return self.name
 
 
 
