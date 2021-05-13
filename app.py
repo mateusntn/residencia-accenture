@@ -62,7 +62,24 @@ def project_id(id):
 
 @app.route('/new_project', methods=['GET', 'POST'])
 def new_project():
-    
+    if request.method == 'POST':
+        projetos = Projeto()
+        projetos.nome = request.form['nome']
+        projetos.custoPrevisto = request.form['custoPrevisto']
+        projetos.area = request.form['area']
+        projetos.descricao = request.form['descricao']
+        projetos.otherCost = request.form['otherCost']
+        projetos.hardware = request.form['hardware']
+        projetos.licenca = request.form['licenca']
+        projetos.duracao = request.form['duracao']
+        projetos.status = request.form['status']
+        projetos.seatCharge = request.form['seatCharge']
+        projetos.nomeEmpresa = request.form['nomeEmpresa']
+
+        db.session.add(projetos)
+        db.session.commit()
+
+        return redirect('/projects')
     return render_template ('/index.html')
 
 
