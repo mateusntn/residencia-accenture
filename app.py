@@ -53,11 +53,11 @@ class Funcionario(db.Model):
 class Usuario(db.Model):
     __tablename__ = "usuarios" 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(45), nullable=True, index=True)
-    email = db.Column(db.String(45), nullable=False, index=True)
-    senha = db.Column(db.String(250), nullable=False)
-    funcionarios_id = db.Column(db.Ineger, nullable=True)
-    funcionarios_cargo_id = db.Column(db.Ineger, nullable=True)
+    nome = db.Column(db.String(45), nullable=False, index=True)
+    email = db.Column(db.String(45), nullable=True, index=True)
+    senha = db.Column(db.String(250), nullable=True)
+    funcionarios_id = db.Column(db.Ineger, nullable=False)
+    funcionarios_cargo_id = db.Column(db.Ineger, nullable=False)
 
 
 class Funcionario_habilidade(db.Model):
