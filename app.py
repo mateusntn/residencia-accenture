@@ -50,7 +50,14 @@ class Funcionario(db.Model):
     cargo_id = db.Column(db.Integer, foreign_key=True, nullable=True)
 
 
-    
+class Usuario(db.Model):
+    __tablename__ = "usuarios" 
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(45), nullable=True, index=True)
+    email = db.Column(db.String(45), nullable=False, index=True)
+    senha = db.Column(db.String(250), nullable=False)
+    funcionarios_id = db.Column(db.Ineger, nullable=True)
+    funcionarios_cargo_id = db.Column(db.Ineger, nullable=True)    
 
 
 def __str__(self):
