@@ -33,6 +33,10 @@ class Habilidade(db.Model):
     nome = db.Column(db.String(45), nullable=True, index=True)
 
 
+class Cargo(db.Model):
+    __tablename__ = "cargos" 
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(45), nullable=True, index=True)
 
 
 def __str__(self):
