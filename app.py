@@ -57,7 +57,14 @@ class Usuario(db.Model):
     email = db.Column(db.String(45), nullable=False, index=True)
     senha = db.Column(db.String(250), nullable=False)
     funcionarios_id = db.Column(db.Ineger, nullable=True)
-    funcionarios_cargo_id = db.Column(db.Ineger, nullable=True)    
+    funcionarios_cargo_id = db.Column(db.Ineger, nullable=True)
+
+
+class Funcionario_habilidade(db.Model):
+    __tablename__ = "funcionarios_habilidades" 
+    funcionarios_id = db.Column(db.Integer, foreign_key=True)
+    habilidades_id = db.Column(db.Integer, foreign_key=True)
+    tempoExperiencia = db.Column(db.Integer, nullable=False)
 
 
 def __str__(self):
