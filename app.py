@@ -39,7 +39,18 @@ class Cargo(db.Model):
     nome = db.Column(db.String(45), nullable=True, index=True)
 
 
+class Funcionario(db.Model):
+    __tablename__ = "funcionarios" 
+    id = db.Column(db.Integer, primary_key=True)
+    nomeCompleto = db.Column(db.String(100), nullable=True, index=True)
+    custoHora = db.Column(db.Decimal, nullable=True)
+    quantProjetos = db.Column(db.Integer, nullable=True)
+    disponibilidade = db.Column(db.String(45), nullable=True)
+    custoHora_overtime = db.Column(db.String(45), nullable=False)
+    cargo_id = db.Column(db.Integer, foreign_key=True, nullable=True)
 
+
+    
 
 
 def __str__(self):
