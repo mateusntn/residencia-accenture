@@ -27,6 +27,14 @@ class Projeto(db.Model):
     nomeEmpresa = db.Column(db.String(45), nullable=True, index=True)
 
 
+class Habilidade(db.Model):
+    __tablename__ = "funcionarios" 
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(45), nullable=True, index=True)
+
+
+
+
 def __str__(self):
     return self.name
 
