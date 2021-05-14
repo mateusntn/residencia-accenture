@@ -36,7 +36,7 @@ class Habilidade(db.Model):
 class Cargo(db.Model):
     __tablename__ = "cargos" 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(45), nullable=True, index=True)
+    nome = db.Column(db.String(45), nullable=False, index=True)
 
 
 class Funcionario(db.Model):
