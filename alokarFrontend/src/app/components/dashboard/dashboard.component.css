@@ -1,0 +1,21 @@
+.dashboard-type {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 5px solid #f0f0f0;
+  padding: 20px 50px 50px 50px;
+  margin-bottom: 40px;
+}
+
+.dashboard-group {
+  display: flex;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+}
+
+.dashboard img {
+  margin-right: 15px;
+}

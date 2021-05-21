@@ -14,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectCrudComponent } from './views/project-crud/project-crud.component';
 import { ProjectReadComponent } from './components/project/project-read/project-read.component';
+import { HomeComponent } from './views/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProjectReadComponent } from './components/project/project-read/project-
     HeaderComponent,
     NavComponent,
     ProjectCrudComponent,
-    ProjectReadComponent
+    ProjectReadComponent,
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
