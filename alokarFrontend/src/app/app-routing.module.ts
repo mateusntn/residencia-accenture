@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { ProjectCrudComponent } from './views/project-crud/project-crud.component'
+
+const routes: Routes = [
+  {
+    path: "projects",
+    component: ProjectCrudComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
