@@ -4,6 +4,10 @@
     background-image:linear-gradient(to right,  white, #f8f8ff);
     /* background-color:white; */
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .header a {
