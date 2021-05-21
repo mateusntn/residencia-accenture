@@ -56,8 +56,8 @@ class Usuario(db.Model):
     nome = db.Column(db.String(45), nullable=False, index=True)
     email = db.Column(db.String(45), nullable=True, index=True)
     senha = db.Column(db.String(250), nullable=True)
-    funcionarios_id = db.Column(db.Ineger, nullable=False)
-    funcionarios_cargo_id = db.Column(db.Ineger, nullable=False)
+    funcionarios_id = db.Column(db.Integer, nullable=False)
+    funcionarios_cargo_id = db.Column(db.Integer, nullable=False)
 
 
 class Funcionario_habilidade(db.Model):
