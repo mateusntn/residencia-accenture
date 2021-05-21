@@ -2,7 +2,7 @@
     <mat-sidenav class="sidenav mat-elevation-z2" mode="side" opened
         fixedInViewport="true"  fixedTopGap="64">
         <mat-nav-list class="nav-list">
-            <a mat-list-item>
+            <a mat-list-item routerLink="/">
                 <i class="material-icons">
                     visibility
                 </i>
@@ -14,7 +14,7 @@
                 </i>
                 Adcionar Projeto
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="/projects">
                 <i class="material-icons">
                     list
                 </i>
@@ -28,4 +28,7 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
