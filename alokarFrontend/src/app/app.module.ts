@@ -13,13 +13,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectCrudComponent } from './views/project-crud/project-crud.component';
+import { ProjectReadComponent } from './components/project/project-read/project-read.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     NavComponent,
-    ProjectCrudComponent
+    ProjectCrudComponent,
+    ProjectReadComponent
   ],
   imports: [
     BrowserModule,
