@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import backref, relationship
+from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
 import yaml
 
 app = Flask(__name__)
@@ -10,6 +13,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:doninha20@localhos
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
 
 class Projeto(db.Model):
     __tablename__ = "projetos"
@@ -37,6 +41,7 @@ class Cargo(db.Model):
     __tablename__ = "cargos" 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(45), nullable=False, index=True)
+    funcionarios = db.relationship('Funcionario', backref='cargos')
 
 
 class Funcionario(db.Model):
@@ -47,7 +52,8 @@ class Funcionario(db.Model):
     quantProjetos = db.Column(db.Integer, nullable=False)
     disponibilidade = db.Column(db.String(45), nullable=False)
     custoHora_overtime = db.Column(db.String(45), nullable=True)
-    cargo_id = db.Column(db.Integer, foreign_key=True, nullable=False)
+    cargo_id = db.Column(db.Integer, db.ForeignKey('cargos.id'), nullable=False)
+
 
 
 class Usuario(db.Model):
