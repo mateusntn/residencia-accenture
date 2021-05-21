@@ -43,7 +43,7 @@ class Funcionario(db.Model):
     __tablename__ = "funcionarios" 
     id = db.Column(db.Integer, primary_key=True)
     nomeCompleto = db.Column(db.String(100), nullable=False, index=True)
-    custoHora = db.Column(db.Decimal, nullable=False)
+    custoHora = db.Column(db.Numeric, nullable=False)
     quantProjetos = db.Column(db.Integer, nullable=False)
     disponibilidade = db.Column(db.String(45), nullable=False)
     custoHora_overtime = db.Column(db.String(45), nullable=True)
