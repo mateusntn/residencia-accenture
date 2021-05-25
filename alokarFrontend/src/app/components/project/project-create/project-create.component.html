@@ -1,0 +1,128 @@
+<mat-card class="input-category -projects">
+  <mat-card-title>Projeto</mat-card-title>
+  <form>
+    <div class="inputinho">
+      <label for="">Nome do Projeto:</label>
+      <input matInput  name="name">
+    </div>
+    <div class="inputinho">
+      <label for="">Nome da Empresa:</label>
+      <input matInput name="price">
+    </div>
+    <div class="inputinho -big">
+      <label for="">Descrição do Projeto:</label>
+      <input matInput name="img" class="description">
+    </div>
+  </form>
+</mat-card>
+<mat-card class="input-category -skills">
+  <mat-card-title>Skills</mat-card-title>
+  <div class="filter">
+    <select name="filter">
+      <option value="" selected>Selecione</option>
+      <option value="duracao">Angular</option>
+      <option value="cost">Scrum</option>
+      <option value="area">C#</option>
+      <option value="area">Power BI</option>
+      <option value="area">UX & UI</option>
+      <option value="area">Python</option>
+      <option value="area">Node JS</option>
+      <option value="area">SQL Server</option>
+      <option value="area">Java</option>
+    </select>
+  </div>
+  <div class="outputao">
+    <div class="outputinho role">
+       <p>ANGULAR</p>
+       <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>SCRUM</p>
+      <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>C#</p>
+      <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>SQL SERVER</p>
+      <i class="material-icons">close</i>  
+    </div>
+    <div class="outputinho role">
+      <p>UX/UI</p>
+      <i class="material-icons">close</i>  
+    </div>
+  </div>
+</mat-card>
+<mat-card class="input-category -costs">
+  <mat-card-title>Custos</mat-card-title>
+  <form>
+    <div class="inputinho">
+      <label for="">Orçamento:</label>
+      <input matInput  name="name">
+    </div>
+    <div class="inputinho">
+      <label for="">Licença(s):</label>
+      <input matInput name="price">
+    </div>
+    <div class="inputinho">
+      <label for="">Seat:</label>
+      <input matInput name="price">
+    </div>
+    <div class="inputinho">
+      <label for="">Other Cost:</label>
+      <input matInput name="price">
+    </div>
+    <div class="inputinho">
+      <label for="">Hardware:</label>
+      <input matInput name="price">
+    </div>
+    
+  </form>
+  <div class="total">
+    <p>Custo Total (Planejado):</p>
+    <div class="total-box"></div>
+  </div>
+</mat-card>
+<mat-card class="input-category -functions">
+  <mat-card-title>Funções</mat-card-title>
+  <form>
+    <div class="role">
+      <input matInput type="number" name="analista">
+      <label for="">ANALISTA</label>
+    </div>
+    <div class="role">
+      <input matInput type="number" name="consultor">
+      <label for="">CONSULTOR</label>
+    </div>
+    <div class="role">
+      <input matInput type="number" name="manager">
+      <label for="">MANAGER</label>
+    </div>
+    <div class="role">
+      <input matInput type="number" name="senior-manager">
+      <label for="">SENIOR MANAGER</label>
+    </div>
+  </form>
+  <div class="outputao">
+    <div class="outputinho role">
+       <p>ANALISTA - [3]</p>
+       <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>CONSULTAR - [2]</p>
+      <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>MANAGER - [1]</p>
+      <i class="material-icons">close</i>
+    </div>
+    <div class="outputinho role">
+      <p>SENIOR MANAGER - [3]</p>
+      <i class="material-icons">close</i>  
+    </div>
+  </div>
+</mat-card>
+<div class="div-conclude">
+  <button mat-raised-button class="conclude">CONCLUIR</button>
+</div>
