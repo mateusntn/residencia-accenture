@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProjectCreateComponent } from './components/project/project-create/project-create.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HeaderComponent } from './components/template/header/header.component';
+import { ProjectDetailsComponent } from './views/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HeaderComponent } from './components/template/header/header.component';
     ProjectReadComponent,
     HomeComponent,
     DashboardComponent,
-    ProjectCreateComponent
+    ProjectCreateComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,
