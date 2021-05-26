@@ -1,0 +1,109 @@
+h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitle{
+    font-size:25px;
+    font-weight: bold;
+
+}
+
+mat-card{
+    width: 70%;
+    margin: 20px 0px;
+    padding: 40px;
+    
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employees-allocate{
+    font-size:10px;
+    font-weight: bold;
+}
+
+.outputinho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #280040;
+    color: #fff;
+    font-weight: normal;
+    margin: 10px  0px;
+}
+
+.outputinho p {
+    margin: 0;    
+}
+
+.buttons-details button {
+    color: #fff;
+    height: 50px;
+    width: 170px;
+    white-space: normal;
+    line-height: 17px;
+    margin-bottom: 10px;
+  
+}
+
+.buttons-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 70%;
+    
+
+}
+
+.edit-infos{
+    background-color:  #A100ff;
+}
+
+.allocate{
+    background-color: #6E00F5;
+}
+  
+.div-conclude {
+display: flex;
+justify-content: flex-end;
+}
+
+.outputao {
+    width: 600px;
+    height: 130px;
+    border: 3px solid #f0f0f0;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+    text-align: justify;
+}
+
+.person{
+    display: flex;
+    width: 1000px;
+}
