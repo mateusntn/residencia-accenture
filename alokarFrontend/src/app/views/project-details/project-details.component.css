@@ -16,7 +16,7 @@ section{
 }
 
 mat-card{
-    width: 70%;
+    width: 90%;
     margin: 20px 0px;
     padding: 40px;
     
@@ -39,11 +39,26 @@ mat-card{
     font-weight: bold;
 }
 
+.outputao {
+  width: 600px;
+  height: 130px;
+  border: 3px solid #f0f0f0;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 15px;
+  text-align: justify;
+}
+
 .outputinho {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 130px;
     border-radius: 10px;
     height: 30px;
     background-color: #280040;
@@ -56,25 +71,6 @@ mat-card{
     margin: 0;    
 }
 
-.buttons-details button {
-    color: #fff;
-    height: 50px;
-    width: 170px;
-    white-space: normal;
-    line-height: 17px;
-    margin-bottom: 10px;
-  
-}
-
-.buttons-details{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 70%;
-    
-
-}
-
 .edit-infos{
     background-color:  #A100ff;
 }
@@ -83,27 +79,51 @@ mat-card{
     background-color: #6E00F5;
 }
   
-.div-conclude {
-display: flex;
-justify-content: flex-end;
-}
-
-.outputao {
-    width: 600px;
-    height: 130px;
-    border: 3px solid #f0f0f0;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 15px;
-    text-align: justify;
-}
-
 .person{
     display: flex;
-    width: 1000px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #f0f0f0;
+    border-radius: 40px;
+    margin-top: 30px;
+    padding: 10px 15px;
+}
+
+.person .employee-img {
+    display: flex;
+    align-items: center;
+}
+
+.person .employee-img img {
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.person .employee-img p {
+    margin-bottom: 0;
+}
+
+.skills-func {
+  display: flex;
+}
+
+.skills-func .outputinho {
+  margin-right: 10px;
+}
+
+.buttons-details{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.buttons-details button {
+    color: #fff;
+    height: 50px;
+    width: 170px;
+    white-space: normal;
+    line-height: 17px;
+    margin-left: 10px;
 }
