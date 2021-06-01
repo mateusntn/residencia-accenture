@@ -20,6 +20,7 @@ import { ProjectCreateComponent } from './components/project/project-create/proj
 import { NavComponent } from './components/template/nav/nav.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { ProjectDetailsComponent } from './views/project-details/project-details.component';
+import { ProjectAllocationComponent } from './views/project-allocation/project-allocation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProjectDetailsComponent } from './views/project-details/project-details
     HomeComponent,
     DashboardComponent,
     ProjectCreateComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    ProjectAllocationComponent
   ],
   imports: [
     BrowserModule,

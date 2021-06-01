@@ -5,6 +5,7 @@ import { ProjectCrudComponent } from './views/project-crud/project-crud.componen
 import { HomeComponent } from './views/home/home.component'
 import { ProjectCreateComponent } from './components/project/project-create/project-create.component';
 import { ProjectDetailsComponent } from './views/project-details/project-details.component';
+import { ProjectAllocationComponent } from './views/project-allocation/project-allocation.component';
 
 const routes: Routes = [
   {
@@ -22,8 +23,11 @@ const routes: Routes = [
   {
     path: "projects/details",
     component: ProjectDetailsComponent
-  } 
-
+  },
+  {
+    path: "projects/allocation",
+    component: ProjectAllocationComponent
+  }
 ];
 
 @NgModule({
