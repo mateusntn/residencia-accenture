@@ -11,6 +11,12 @@ button {
   line-height: 17px;
 }
 
+button:hover {
+    background-color: #4b00a7;
+    transform: scale(1.02);
+    transition: all linear 0.2s;
+}
+
 .aloc-completed {
   background-color: #280040;
   margin-right: 10px;
