@@ -81,11 +81,10 @@
   border-radius: 5px;
 }
 
-.role {
+.outputao .outputinho.role {
   margin-top: 10px;
-  font-weight: bold;
   font-size: 12px;
-  color: #280040;
+  width: 180px;
 }
 
 .-functions form input {
@@ -118,6 +117,7 @@
   color: #fff;
   font-weight: normal;
   padding-left: 20px;
+  margin-top: 10px;
 }
 
 .outputao .outputinho i {
@@ -134,6 +134,11 @@
   justify-content: space-between;
 }
 
+.div-conclude {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .conclude {
   color: #fff;
   height: 50px;
@@ -143,9 +148,10 @@
   margin-bottom: 50px;
   background-color: #6e00f5;
   margin-left: auto;
+  transition: all linear 0.2s;
 }
 
-.div-conclude {
-  display: flex;
-  justify-content: flex-end;
+.conclude:hover {
+    background-color: #4b00a7;
+    transform: scale(1.02);
 }
