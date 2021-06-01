@@ -70,14 +70,6 @@ mat-card{
 .outputinho p {
     margin: 0;    
 }
-
-.edit-infos{
-    background-color:  #A100ff;
-}
-
-.allocate{
-    background-color: #6E00F5;
-}
   
 .person{
     display: flex;
@@ -126,4 +118,18 @@ mat-card{
     white-space: normal;
     line-height: 17px;
     margin-left: 10px;
+    transition: all linear 0.2s;
+}
+
+.buttons-details button:hover {
+    background-color: #4b00a7;
+    transform: scale(1.02);
+}
+
+.edit-infos{
+    background-color:  #A100ff;
+}
+
+.allocate{
+    background-color: #6E00F5;
 }
