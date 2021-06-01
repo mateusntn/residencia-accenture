@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref, relationship
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql.selectable import Select
 import yaml
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ app = Flask(__name__)
 # Configure DB
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:doninha20@localhost/mydb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_CURSORCLASS'] = "DictCursor"
 
 db = SQLAlchemy(app)
 
@@ -126,10 +128,11 @@ def dashboard():
     return 'Dashboard'
     
 
-@app.route('/projects')
+@app.route('/projects', methods=['GET', 'POST'])
 def projects():
-    return 'Projetos'
-
+    projetos = db.session.query(Projeto).all()    
+    return render_template('projects.html', projetos=projetos)
+    
 
 @app.route('/projects/<int:id>')
 def project_id(id):
