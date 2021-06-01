@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref, relationship
 from sqlalchemy import Table, Column, Integer, ForeignKey
@@ -130,13 +130,14 @@ def dashboard():
 
 @app.route('/projects', methods=['GET', 'POST'])
 def projects():
-    projetos = db.session.query(Projeto).all()    
+    projetos = Projeto.query.all()   
     return render_template('projects.html', projetos=projetos)
     
 
 @app.route('/projects/<int:id>')
 def project_id(id):
-    return 'Projeto id'
+    projeto = Projeto.query.get(id)
+    return render_template('project.html', projeto=projeto)
 
 
 @app.route('/new_project', methods=['GET', 'POST'])
