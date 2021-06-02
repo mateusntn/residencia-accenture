@@ -74,13 +74,9 @@ p {
 
 .option .header {
     display: flex;
-    padding: 10px 15px;
-}
+    justify-content: space-between;
+    padding: 10px 150px 10px 100px;
 
-.option .header .status,
-.option .header .profile,
-.option .header .skills {
-    justify-content: center;
 }
 
 .option .employee {
@@ -93,26 +89,6 @@ p {
     padding: 10px 15px;
 }
 
-.status {
-    display: flex;
-    align-items: center;
-    width: 20%;
-}
-
-.option .employee .status .availability {
-    width: 100px;
-    background-color: #05c46b;
-    color: #fff;
-    border-radius: 10px;
-    text-align: center;
-    margin-left: 10px;
-}
-
-.option .employee .status .availability.-unavailable {
-    background-color: #E83F5B;
-    margin-left: 30px;
-}
-
 .profile {
     display: flex;
     align-items: center;
@@ -122,13 +98,14 @@ p {
 .option .employee .profile img {
     border-radius: 50%;
     margin-right: 10px;
+    margin-left: 10px;
     width: 40px;
 }
 
 .skills {
     display: flex;
-    justify-content: center;
-    width: 50%;
+    justify-content: flex-end;
+    width: 70%;
 }
 
 .option .employee .skills .outputinho {
