@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import backref, relationship
+from sqlalchemy.orm import backref, query, relationship
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.selectable import Select
@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_CURSORCLASS'] = "DictCursor"
 db = SQLAlchemy(app)
 
 
-projeto_habilidade = db.Table('projetos_habilidades',
+projetos_habilidades = db.Table('projetos_habilidades',
     db.Column('projetos.id', db.Integer, db.ForeignKey('projetos.id')),
     db.Column('habilidades.id', db.Integer, db.ForeignKey('habilidades.id'))
 )
@@ -130,18 +130,25 @@ def dashboard():
 
 @app.route('/projects', methods=['GET', 'POST'])
 def projects():
-    projetos = Projeto.query.all()   
+    projetos = Projeto.query.all()    
     return render_template('projects.html', projetos=projetos)
-    
 
-@app.route('/projects/<int:id>')
+
+@app.route('/projects/<int:id>', methods=['GET', 'PUT'])
 def project_id(id):
     projeto = Projeto.query.get(id)
     return render_template('project.html', projeto=projeto)
 
 
+
+
 @app.route('/new_project', methods=['GET', 'POST'])
 def new_project():
+
+    skills = Habilidade.query.all()
+    funcoes = Cargo.query.all()
+    skill = Habilidade.query.get(id)
+
     if request.method == 'POST':
         projetos = Projeto()
         projetos.nome = request.form['nome']
@@ -155,17 +162,23 @@ def new_project():
         projetos.status = request.form['status']
         projetos.seatCharge = request.form['seatCharge']
         projetos.nomeEmpresa = request.form['nomeEmpresa']
-
+        
+        
         db.session.add(projetos)
         db.session.commit()
+        # return redirect('/projects')
+    
 
-        return redirect('/projects')
-    return render_template ('/index.html')
+    return render_template ('/index.html', skills=skills, funcoes=funcoes, skill=skill)
 
 
-@app.route('/alocation')
-def alocation():
-    return 'Alocação'
+
+
+@app.route('/allocation')
+def allocation():
+    funcionarios = Funcionario.query.all()
+    return render_template('allocation.html', funcionarios=funcionarios)
+
     
 
 
