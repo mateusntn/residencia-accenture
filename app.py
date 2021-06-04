@@ -263,8 +263,14 @@ def edit_project(id):
 def new_project():
 
     skills = Habilidade.query.all()
-    funcoes = Cargo.query.all()
     skill = Habilidade.query.get(id)
+    skill_schema = HabilidadeSchema(many=True)
+    habilidades = skill_schema.dump(skills)
+    habilidade = skill_schema.dump(skill)
+
+    funcoes = Cargo.query.all()
+    funcoes_schema = CargoSchema(many=True)
+    fun = funcoes_schema.dump(funcoes)
 
     if request.method == 'POST':
         projetos = Projeto()
@@ -283,10 +289,10 @@ def new_project():
         
         db.session.add(projetos)
         db.session.commit()
-        # return redirect('/projects')
+        
     
 
-    return render_template ('/index.html', skills=skills, funcoes=funcoes, skill=skill)
+    return make_response(jsonify({'skills': habilidades}, {'funcoes': fun}))
 
 
 
