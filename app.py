@@ -201,7 +201,7 @@ def dashboard():
     return 'Dashboard'
     
 
-@app.route('/projects', methods=['GET', 'POST'])
+@app.route('/projects', methods=['GET'])
 def projects(): 
     projetos = Projeto.query.all()
     projects_schema = ProjectSchema(many=True)
@@ -263,9 +263,10 @@ def edit_project(id):
 def new_project():
 
     skills = Habilidade.query.all()
-    skill = Habilidade.query.get(id)
+    skills_schema = HabilidadeSchema(many=True)
+    habilidades = skills_schema.dump(skills)
+    skill = Habilidade.query.filter_by(id=id)
     skill_schema = HabilidadeSchema(many=True)
-    habilidades = skill_schema.dump(skills)
     habilidade = skill_schema.dump(skill)
 
     funcoes = Cargo.query.all()
@@ -292,21 +293,25 @@ def new_project():
         
     
 
-    return make_response(jsonify({'skills': habilidades}, {'funcoes': fun}))
-
-
-
+    return make_response(jsonify({'skills': habilidades}, {'funcoes': fun}, {'skill': skill}))
 
 @app.route('/allocation')
 def allocation():
     funcionarios = Funcionario.query.all()
-    return render_template('allocation.html', funcionarios=funcionarios)
-
+    funcionarios_schema = FuncionarioSchema(many=True)
+    employees = funcionarios_schema.dump(funcionarios)
     
 
+    return make_response(jsonify({'funcionarios': employees}))
 
 
+@app.route('/allocation/<int:id>')
+def employee_id(id):    
+    funcionario = Funcionario.query.filter_by(id=id)
+    funcionario_schema = FuncionarioSchema(many=True)
+    employee = funcionario_schema.dump(funcionario)
 
+    return make_response(jsonify({'funcionario': employee}))
 
 
 if __name__ == '__main__':
