@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, make_response
+from flask.wrappers import Response
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref, query, relationship
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.selectable import Select
+from marshmallow_sqlalchemy import SQLAlchemySchema
+from marshmallow import fields
 import yaml
+import json
 
 app = Flask(__name__)
 
@@ -40,6 +44,22 @@ class Projeto(db.Model):
     projetos_habilidades = db.relationship('Habilidade', secondary='projetos_habilidades', lazy='dynamic')
     funcionarios = db.relationship("Funcionario", secondary="funcionarios_projetos")
 
+class ProjectSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Projeto
+        sqla_session = db.session
+    id = fields.Number(dump_only=True)
+    nome = fields.String(required=True)
+    custoPrevisto = fields.Number(required=True)
+    area = fields.String(required=True)
+    descricao = fields.String(required=True)
+    otherCost = fields.Number(required=True)
+    hardware = fields.Number(required=True)
+    licenca = fields.Number(required=True)
+    duracao = fields.String(required=True)
+    status = fields.String(required=True)
+    seatCharge = fields.Number(required=True)
+    nomeEmpresa = fields.String(required=True)
 
 class Habilidade(db.Model):
     __tablename__ = "habilidades" 
@@ -48,12 +68,28 @@ class Habilidade(db.Model):
 
     funcionarios = db.relationship("Funcionario", secondary="funcionarios_habilidades")
 
+class HabilidadeSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Habilidade
+        sqla_session = db.session
+    id = fields.Number(dump_only=True)
+    nome = fields.String(required=True)
+    
+
 class Cargo(db.Model):
     __tablename__ = "cargos" 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(45), nullable=False, index=True)
 
     funcionarios = db.relationship('Funcionario', backref='cargos')
+
+
+class CargoSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Cargo
+        sqla_session = db.session
+    id = fields.Number(dump_only=True)
+    nome = fields.String(required=True)
 
 
 class Funcionario(db.Model):
@@ -70,7 +106,18 @@ class Funcionario(db.Model):
     projetos = db.relationship("Projeto", secondary="funcionarios_projetos")
     usuarios = db.relationship("Usuario", back_populates="funcionarios")
 
-
+class FuncionarioSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Funcionario
+        sqla_session = db.session
+    id = fields.Number(dump_only=True)
+    nomeCompleto = fields.String(required=True)
+    custoHora = fields.Number(required=True)    
+    quantProjetos = fields.Number(required=True)
+    disponibilidade = fields.String(required=True)
+    custoHora_overtime = fields.String(required=True)
+    cargo_id = fields.Number(required=True)
+    
 
 class Usuario(db.Model):
     __tablename__ = "usuarios" 
@@ -83,6 +130,17 @@ class Usuario(db.Model):
 
     funcionarios = db.relationship("Funcionario", back_populates="usuarios")
 
+class UsuarioSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Usuario
+        sqla_session = db.session
+    id = fields.Number(dump_only=True)
+    nome = fields.String(required=True)
+    email = fields.String(required=True)    
+    senha = fields.String(required=True)
+    funcionarios_id = fields.Number(required=True)
+    funcionarios_cargo_id = fields.Number(required=True)
+    
 
 class Funcionario_habilidade(db.Model):
     __tablename__ = "funcionarios_habilidades" 
@@ -93,17 +151,32 @@ class Funcionario_habilidade(db.Model):
     habilidades = db.relationship("Habilidade", backref=backref("funcionarios_habilidades", cascade="all, delete-orphan"))
     funcionarios = db.relationship("Funcionario", backref=backref("funcionarios_habilidades", cascade="all, delete-orphan"))
 
-
+class Funcionario_habilidadeSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Funcionario_habilidade
+        sqla_session = db.session
+    funcionarios_id = fields.Number(dump_only=True)
+    funcionarios_cargo_id = fields.Number(dump_only=True)   
+    tempoExperiencia= fields.String(required=True)
 
 class Funcionario_projeto(db.Model):
     __tablename__ = "funcionarios_projetos" 
     funcionarios_id = db.Column(db.Integer, db.ForeignKey('funcionarios.id'), primary_key=True)
     projetos_id = db.Column(db.Integer, db.ForeignKey('projetos.id'), primary_key=True)
     overtime = db.Column(db.Integer, nullable=True)
-    funcao = db.Column(db.Integer, nullable=True)
+    funcao = db.Column(db.String(45), nullable=True)
     
     projetos = db.relationship("Projeto", backref=backref("funcionarios_projetos", cascade="all, delete-orphan"))
     funcionarios = db.relationship("Funcionario", backref=backref("funcionarios_projetos", cascade="all, delete-orphan"))
+
+class Funcionario_projetoSchema(SQLAlchemySchema):
+    class Meta(SQLAlchemySchema.Meta):
+        model = Funcionario_projeto
+        sqla_session = db.session
+    funcionarios_id = fields.Number(dump_only=True)
+    projetos_id = fields.Number(dump_only=True)   
+    overtime = fields.Number(required=True)
+    funcao = fields.String(required=True)
 
 def __str__(self):
     return self.name
@@ -129,16 +202,60 @@ def dashboard():
     
 
 @app.route('/projects', methods=['GET', 'POST'])
-def projects():
-    projetos = Projeto.query.all()    
-    return render_template('projects.html', projetos=projetos)
+def projects(): 
+    projetos = Projeto.query.all()
+    projects_schema = ProjectSchema(many=True)
+    projects = projects_schema.dump(projetos)
+    
+    return make_response(jsonify({'projects': projects}))
+    
 
 
-@app.route('/projects/<int:id>', methods=['GET', 'PUT'])
+@app.route('/projects/<int:id>', methods=['GET'])
 def project_id(id):
-    projeto = Projeto.query.get(id)
-    return render_template('project.html', projeto=projeto)
+    projeto = Projeto.query.filter_by(id=id)
+    project_schema = ProjectSchema(many=True)
+    project_id = project_schema.dump(projeto)
+    return make_response(jsonify({'project_id': project_id}))
 
+    
+@app.route('/projects/<int:id>', methods=['PUT'])
+def edit_project(id):
+    projeto = Projeto.query.filter_by(id=id)
+    project_schema = ProjectSchema(many=True)
+    project_id = project_schema.dump(projeto)
+
+    try:
+        if ('nome' in projeto):
+            projeto.nome = request.form['nome']
+        if ('custoPrevisto' in projeto):
+            projeto.custoPrevisto = request.form['custoPrevisto']
+        if ('custoPrevisto' in projeto):
+            projeto.area = request.form['custoPrevisto']
+        if ('descricao' in projeto):
+            projeto.descricao = request.form['descricao']
+        if ('otherCost' in projeto):
+            projeto.otherCost = request.form['otherCost']
+        if ('hardware' in projeto):
+            projeto.hardware = request.form['hardware']
+        if ('licenca' in projeto):
+            projeto.licenca = request.form['licenca']
+        if ('duracao' in projeto):
+            projeto.duracao = request.form['duracao']
+        if ('status' in projeto):
+            projeto.status = request.form['status']
+        if ('seatCharge' in projeto):
+            projeto.seatCharge = request.form['seatCharge']
+        if ('nomeEmpresa' in projeto):
+            projeto.nomeEmpresa = request.form['nomeEmpresa']
+
+        db.session.add(projeto)
+        db.session.commit()
+
+    except:
+        return 'Não foi possível realizar a ação!'
+
+    return make_response(jsonify({'project_id': project_id}))
 
 
 
