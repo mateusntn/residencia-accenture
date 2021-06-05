@@ -3,15 +3,23 @@
     <form>
         <div class="inputinho">
             <label for="">Nome do Projeto:</label>
-            <input matInput name="name">
+            <input matInput [(ngModel)]="project.name" name="name">
         </div>
         <div class="inputinho">
             <label for="">Nome da Empresa:</label>
-            <input matInput name="price">
+            <input matInput [(ngModel)]="project.costumer" name="costumer">
+        </div>
+        <div class="inputinho">
+            <label for="">Área do Projeto:</label>
+            <input matInput [(ngModel)]="project.area" name="area">
+        </div>
+        <div class="inputinho">
+            <label for="">Duração do Projeto:</label>
+            <input matInput [(ngModel)]="project.duration" name="duration">
         </div>
         <div class="inputinho -big">
             <label for="">Descrição do Projeto:</label>
-            <input matInput name="img" class="description">
+            <input matInput [(ngModel)]="project.description" name="description" class="description">
         </div>
     </form>
 </mat-card>
@@ -96,7 +104,7 @@
     <form>
         <div class="inputinho">
             <label for="">Orçamento:</label>
-            <input matInput name="name">
+            <input matInput [(ngModel)]="project.value" name="value">
         </div>
         <div class="inputinho">
             <label for="">Licença(s):</label>
@@ -122,5 +130,5 @@
     </div>
 </mat-card>
 <div class="div-conclude">
-    <button mat-raised-button routerLink="/projects/details" class="conclude">CONCLUIR</button>
+    <button mat-raised-button (click)="createProject()" class="conclude">CONCLUIR</button>
 </div>

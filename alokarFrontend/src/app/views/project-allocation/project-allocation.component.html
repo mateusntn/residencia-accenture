@@ -7,25 +7,9 @@
                 <i class="material-icons">expand_more</i>
             </div>
             <div class="drop">
-                <div class="checkbox">
-                    <input type="checkbox" id="angular" name="angular">
-                    <label for="angular">Angular</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="c#" name="c#">
-                    <label for="c#">C#</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="python" name="python">
-                    <label for="python">Python</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="sql" name="sql">
-                    <label for="sql">Sql Server</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="js" name="js">
-                    <label for="js">Java Script</label>
+                <div class="checkbox" *ngFor="let skill of skills">
+                    <input type="checkbox" id="{{skill.name}}" name="{{skill.name}}">
+                    <label for="{{skill.name}}">{{skill.name}}</label>
                 </div>
             </div>
             <div class="down">
@@ -65,112 +49,17 @@
                     <h3>Skills</h3>
                 </div>
             </div>
-            <div class="employee">
+            <div class="employee" *ngFor="let employee of employees">
                 <div class="profile">
                     <input type="checkbox" id="angular" name="angular">
                     <img src="/assets/img/func1.svg" alt="Foto do usuário">
                     <div>
-                        <p>Carlos Benjamin</p>
-                        <p>ANALISTA</p>
+                        <p>{{employee.name}}</p>
+                        <p>{{employee.role}}</p>
                     </div>
                 </div>
                 <div class="skills">
-                    <div class="outputinho">SQL SERVER</div>
-                    <div class="outputinho">I. ARTIFICIAL</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func2.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Andrey Silva</p>
-                        <p>CIENTISTA DE DADOS</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">SQL SERVER</div>
-                    <div class="outputinho">POWER BI</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func3.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Denise Rosa</p>
-                        <p>ANALISTA</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">MY SQL</div>
-                    <div class="outputinho">POWER BI</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func4.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Camila Gouveia</p>
-                        <p>MANAGER</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">SCRUM</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func2.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Andrey Silva</p>
-                        <p>CIENTISTA DE DADOS</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">SQL SERVER</div>
-                    <div class="outputinho">POWER BI</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func3.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Denise Rosa</p>
-                        <p>ANALISTA</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">MY SQL</div>
-                    <div class="outputinho">POWER BI</div>
-                </div>
-            </div>
-            <div class="employee">
-                
-                
-                <div class="profile">
-                    <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func4.svg" alt="Foto do usuário">
-                    <div>
-                        <p>Camila Gouveia</p>
-                        <p>MANAGER</p>
-                    </div>
-                </div>
-                <div class="skills">
-                    <div class="outputinho">SCRUM</div>
+                    <div class="outputinho" *ngFor="let skill of employee.skills">{{skill}}</div>
                 </div>
             </div>
         </mat-card>
