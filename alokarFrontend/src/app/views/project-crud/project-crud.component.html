@@ -1,19 +1,14 @@
 <div class="buttons">
-  <div>
-    <button mat-raised-button class="aloc-completed">ALOCAÇÃO COMPLETA</button>
-    <button mat-raised-button class="aloc-incompleted">ALOCAÇÃO INCOMPLETA</button>
-  </div>
-
-  <button class="add-project" mat-raised-button routerLink="/projects/create">ADICIONAR PROJETO</button>
-</div>
-<div class="filter">
-  <label for="filter">ORDENAR POR:</label>
-  <select name="filter">
-    <option value="" selected>Inclusão</option>
-    <option value="duracao">Duração</option>
-    <option value="cost">Custo</option>
-    <option value="area">Área</option>
-  </select>
+    <div class="filter">
+        <label for="filter">ORDENAR POR:</label>
+        <select name="filter">
+        <option value="" selected>Inclusão</option>
+        <option value="duracao">Duração</option>
+        <option value="cost">Custo</option>
+        <option value="area">Área</option>
+        </select>
+    </div>
+    <button class="add-project" mat-raised-button routerLink="/projects/create">ADICIONAR PROJETO</button>
 </div>
 
 <app-project-read></app-project-read>
