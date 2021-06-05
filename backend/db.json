@@ -1,0 +1,89 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "name": "Angular"
+    },
+    {
+      "id": 2,
+      "name": "C#"
+    },
+    {
+      "id": 3,
+      "name": "Python"
+    },
+    {
+      "id": 4,
+      "name": "SQL Server"
+    },
+    {
+      "id": 5,
+      "name": "Java Script"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Projeto teste",
+      "costumer": "Empresa teste",
+      "description": "Descrição",
+      "value": 1,
+      "duration": "Long Therm",
+      "area": "Area teste"
+    },
+    {
+      "name": "Melhorias",
+      "costumer": "Accenture",
+      "description": "Melhor sistema de cadastro de consultas",
+      "value": "32000",
+      "duration": "Long Therm",
+      "area": "Saúde",
+      "id": 2
+    },
+    {
+      "name": "Teste",
+      "costumer": "teste",
+      "description": "teste",
+      "value": "123123",
+      "duration": "teste",
+      "area": "teste",
+      "id": 3
+    },
+    {
+      "name": "testando",
+      "costumer": "testando",
+      "description": "testando",
+      "value": "42100",
+      "duration": "Short Therm",
+      "area": "testando",
+      "id": 4
+    },
+    {
+      "name": "Alokar",
+      "costumer": "Accenture",
+      "description": "Muito difícil",
+      "value": "0",
+      "duration": "Short Therm",
+      "area": "T.I",
+      "id": 5
+    }
+  ],
+  "employees": [
+    {
+      "name": "William Alves",
+      "role": "Analista",
+      "skills": [
+        "C#",
+        "Python"
+      ]
+    },
+    {
+      "name": "Danny Morais",
+      "role": "Manager",
+      "skills": [
+        "Angular",
+        "Java Script"
+      ]
+    }
+  ]
+}
