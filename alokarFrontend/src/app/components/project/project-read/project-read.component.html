@@ -1,50 +1,16 @@
 <div class="list">
-  <div class="row">
+  <div class="row" *ngFor="let project of projects">
     <div class="title-project">
       <div class="circle"></div>
-      <h2>PROJETO 1: DESIGN UX|UI</h2>
+      <h2>{{ project.name }}</h2>
     </div>
     <div class="details">
-      <p>DURAÇÃO: Long Therm</p>
-      <p>CUSTO: R$20.000,00</p>
-      <p>ÁREA: SAÚDE</p>
+        <div>
+            <p>DURAÇÃO: {{ project.duration }}</p>
+            <p>CUSTO: {{ project.value }}</p>
+            <p>ÁREA: {{ project.area }}</p>
+        </div>
+      <a routerLink="/projects/details">Detalhes do Projeto</a>
     </div>
-    <a routerLink="/projects/details">Detalhes do Projeto</a>
-  </div>
-  <div class="row">
-    <div class="title-project">
-      <div class="circle"></div>
-      <h2>PROJETO 1: DESIGN UX|UI</h2>
-    </div>
-    <div class="details">
-      <p>DURAÇÃO: Long Therm</p>
-      <p>CUSTO: R$20.000,00</p>
-      <p>ÁREA: SAÚDE</p>
-    </div>
-    <a routerLink="/projects/details">Detalhes do Projeto</a>
-  </div>
-  <div class="row">
-    <div class="title-project">
-      <div class="circle"></div>
-      <h2>PROJETO 1: DESIGN UX|UI</h2>
-    </div>
-    <div class="details">
-      <p>DURAÇÃO: Long Therm</p>
-      <p>CUSTO: R$20.000,00</p>
-      <p>ÁREA: SAÚDE</p>
-    </div>
-    <a routerLink="/projects/details">Detalhes do Projeto</a>
-  </div>
-  <div class="row">
-    <div class="title-project">
-      <div class="circle"></div>
-      <h2>PROJETO 1: DESIGN UX|UI</h2>
-    </div>
-    <div class="details">
-      <p>DURAÇÃO: Long Therm</p>
-      <p>CUSTO: R$20.000,00</p>
-      <p>ÁREA: SAÚDE</p>
-    </div>
-    <a routerLink="/projects/details">Detalhes do Projeto</a>
   </div>
 </div>

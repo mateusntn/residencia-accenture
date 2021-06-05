@@ -28,8 +28,12 @@
 }
 
 .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-left: 3px solid #f0f0f0;
   padding-left: 10px;
+  width: 35%;
 }
 
 .details p {
