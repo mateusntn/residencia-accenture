@@ -107,7 +107,6 @@
         <h3> Tela de alocação </h3>
             <p> Nesta tela são listados os funcionários disponíveis para serem alocados juntamente com as skills que possui.
             Neste processo de alocação, o usuário poderá otimizar a sua busca usando os filtros situados no canto esquerdo.
-                <img src="/img/filtros.png" alt="imagem dos filtros" height="100px">
             Nele é possível priorizar os resultados, levando em conta as skills ou as funções.
             Para usá-lo basta marcar o checkbox da opção desejada.
             Para alocar o funcionário no projeto basta selecioná-lo clicando no checkbox, ao montar o time desejado,
