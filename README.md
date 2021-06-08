@@ -52,7 +52,7 @@
 <div class="bancodedados">
     <h3> Itens para instalar - Banco de dados </h3>
     <ol>
-        <li> Faça a importação do banco de dados. Para isso, na barra de tarefas, vá em "Server" e depois em "Data import" como na imagem.</li>
+        <li> Faça a importação do banco de dados(o arquivo está na pasta database). Para isso, na barra de tarefas, vá em "Server" e depois em "Data import" como na imagem.</li>
         <img src="/img/banco-de-dados1.png" alt="imagem do data import" height="250px">
         <li> Após isso, selecione a opção "Import from Self-Contained File" e escolha o diretório em que o arquivo ficará e clicar em "Import".</li>
         <img src="/img/banco-de-dados2.png" alt="imagem do data import" height="250px">
