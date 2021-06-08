@@ -49,7 +49,10 @@
                     <h3>Skills</h3>
                 </div>
             </div>
-            <div class="employee" *ngFor="let employee of employees">
+            <div class="employee" *ngFor="let employee of employees | paginate: { 
+                itemsPerPage: 5,
+                currentPage: page,
+                totalItems: totalRecords }">
                 <div class="profile">
                     <input type="checkbox" id="angular" name="angular">
                     <img src="/assets/img/profile.png" alt="Foto do usuário">
@@ -63,6 +66,7 @@
                     <div class="outputinho">Python</div>
                 </div>
             </div>
+            <pagination-controls  (pageChange)="page = $event"></pagination-controls>
         </mat-card>
     </section>
     <button mat-raised-button routerLink="/projects/details/{{ project[0].id }}"><img src="/assets/img/logo-button.png" alt=""></button>

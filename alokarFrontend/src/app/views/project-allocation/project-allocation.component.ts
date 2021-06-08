@@ -17,6 +17,9 @@ export class ProjectAllocationComponent implements OnInit {
     skills: Skill[]
     project: any
 
+    totalRecords: any;
+    page: number = 1
+
     constructor(private allocationService: AllocationService, private router: ActivatedRoute, private projectService: ProjectService) { }
 
     ngOnInit(): void {
@@ -25,6 +28,7 @@ export class ProjectAllocationComponent implements OnInit {
         })
         this.allocationService.read().subscribe(employees => {
             this.employees = employees;
+            this.totalRecords = employees.length;
         })
         const id = this.router.snapshot.paramMap.get('id');
         this.projectService.readByPk(id).subscribe(project => {
