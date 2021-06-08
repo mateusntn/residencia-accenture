@@ -10,16 +10,23 @@ import { ProjectService } from '../project.service';
 export class ProjectReadComponent implements OnInit {
 
     projects: Project[]
+    totalRecords: any;
+    page: number = 1
 
     constructor(private projectService: ProjectService) { }
 
     ngOnInit(): void {
+        this.getProjects();
+    }
+
+    getProjects() {
         this.projectService.read().subscribe(projects => {
             this.projects = projects;
+            this.totalRecords = projects.length;
         })
     }
 
-    // details() {
+    // details(id) {
     //     this.projectService.readByPk(this.projects).subscribe(projects => {
     //         this.projects = projects;
     //     })

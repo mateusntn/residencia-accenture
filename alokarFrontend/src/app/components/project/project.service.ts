@@ -9,7 +9,7 @@ import { Project } from './project.model';
 })
 export class ProjectService {
 
-    baseUrl = "http://localhost:3001/projects"
+    
 
     constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -22,14 +22,22 @@ export class ProjectService {
     }
 
     create(project: Project): Observable<Project> {
-        return this.http.post<Project>(this.baseUrl, project)
+        const url = "http://localhost:5000/new_project";
+        return this.http.post<Project>(url, project);
     }
 
     read(): Observable<Project[]> {
-        return this.http.get<Project[]>(this.baseUrl);
+        const url = "http://localhost:5000/projects";
+        return this.http.get<Project[]>(url);
     }
 
-    // readByPk(project: Project): Observable<Project> {
-    //     return this.http.get<Project>(`${this.baseUrl}/${project.id}`)
-    // }
+    update(newProject: Project, id: any): Observable<Project> {
+        const url= `http://localhost:5000/projects/${id}`;
+        return this.http.put<Project>(url, newProject);
+    }
+
+    readByPk(id: any): Observable<Project> {
+        const url = "http://localhost:5000/projects";
+        return this.http.get<Project>(`${url}/${id}`);
+    }
 }

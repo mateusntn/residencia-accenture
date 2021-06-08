@@ -9,13 +9,14 @@ import { Skill } from './skill.model';
 })
 export class AllocationService {
 
-    baseUrl = "http://localhost:3001/employees"
-    skillUrl = "http://localhost:3001/skills"
+    employeeUrl = "http://localhost:5000/employees"
+    skillUrl = "http://localhost:5000/skills"
+    fhUrl = "http://localhost:5000/fh"
 
     constructor(private http: HttpClient) { }
 
     read(): Observable<Employee[]> {
-        return this.http.get<Employee[]>(this.baseUrl);
+        return this.http.get<Employee[]>(this.employeeUrl);
     }
 
     readSkills(): Observable<Skill[]> {

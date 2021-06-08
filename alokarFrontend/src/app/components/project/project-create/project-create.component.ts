@@ -11,12 +11,17 @@ import { Router } from '@angular/router'
 export class ProjectCreateComponent implements OnInit {
 
     project: Project = {
-        name: '',
-        costumer: '',
-        description: '',
-        value: 0,
-        duration: '',
-        area: ''
+        nome: '',
+        nomeEmpresa: '',
+        descricao: '',
+        custoPrevisto: 0,
+        duracao: '',
+        area: '',
+        otherCost: 0,
+        hardware: 0,
+        licenca: 0,
+        status: '',
+        seatCharge: 0
     }
 
     constructor(private projectService: ProjectService, private router: Router) { }
@@ -28,7 +33,7 @@ export class ProjectCreateComponent implements OnInit {
     createProject(): void {
         this.projectService.create(this.project).subscribe(() => {
             this.projectService.showMessage('Projeto criado com sucesso.');
-            this.router.navigate(['/projects']);
+            this.router.navigate([`/projects/`]);
         })
     }
 }

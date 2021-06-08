@@ -1,12 +1,9 @@
 <section>
-    <h1>POWER BI</h1>
+    <h1>{{project[0].nome}}</h1>
     <mat-card class="details">
         <mat-card-title class="subtitle">Detalhes do Projeto:</mat-card-title>
         <div class="outputao">
-            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam perspiciatis, 7
-                accusamus in sint quasi adipisci delectus laborum vero cum molestias eos minima ipsa ad dolorem
-                officiis,
-                labore praesentium voluptatum unde.</p>
+            <p>{{ project[0].descricao }}</p>
         </div>
     </mat-card>
     <mat-card class="skills">
@@ -87,7 +84,7 @@
         </div>
     </mat-card>
     <div class="buttons-details">
-        <button mat-raised-button routerLink="/projects/create" class="edit-infos">EDITAR INFORMAÇÕES</button>
-        <button mat-raised-button routerLink="/projects/allocation" class="allocate">ALOCAR FUNCIONÁRIOS</button>
+        <button mat-raised-button routerLink="/projects/update/{{project[0].id}}"   class="edit-infos">EDITAR INFORMAÇÕES</button>
+        <button mat-raised-button routerLink="/projects/allocation/{{project[0].id}}" class="allocate">ALOCAR FUNCIONÁRIOS</button>
     </div>
 </section>

@@ -1,9 +1,14 @@
 export interface Project {
     id?: number
-    name: string
-    costumer: string
-    description: string
-    value: number
-    duration: string
+    nome: string
+    nomeEmpresa: string
+    descricao: string
+    custoPrevisto: number
+    duracao: string
     area: string
+    otherCost: number
+    hardware: number
+    licenca: number
+    status: string
+    seatCharge: number
 }

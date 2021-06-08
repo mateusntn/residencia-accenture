@@ -16,6 +16,10 @@
   margin-right: 60px;
 }
 
+.dashboard .graph {
+    width: 100px;
+}
+
 .dashboard img {
   margin-right: 15px;
 }

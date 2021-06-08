@@ -8,8 +8,8 @@
             </div>
             <div class="drop">
                 <div class="checkbox" *ngFor="let skill of skills">
-                    <input type="checkbox" id="{{skill.name}}" name="{{skill.name}}">
-                    <label for="{{skill.name}}">{{skill.name}}</label>
+                    <input type="checkbox" id="{{skill.nome}}" name="{{skill.nome}}">
+                    <label for="{{skill.nome}}">{{skill.nome}}</label>
                 </div>
             </div>
             <div class="down">
@@ -52,17 +52,18 @@
             <div class="employee" *ngFor="let employee of employees">
                 <div class="profile">
                     <input type="checkbox" id="angular" name="angular">
-                    <img src="/assets/img/func1.svg" alt="Foto do usuário">
+                    <img src="/assets/img/profile.png" alt="Foto do usuário">
                     <div>
-                        <p>{{employee.name}}</p>
-                        <p>{{employee.role}}</p>
+                        <p>{{employee.nomeCompleto}}</p>
+                        <p>Manager</p>
                     </div>
                 </div>
                 <div class="skills">
-                    <div class="outputinho" *ngFor="let skill of employee.skills">{{skill}}</div>
+                    <div class="outputinho">C#</div>
+                    <div class="outputinho">Python</div>
                 </div>
             </div>
         </mat-card>
     </section>
-    <button mat-raised-button routerLink="/projects/details"><img src="/assets/img/logo-button.png" alt=""></button>
+    <button mat-raised-button routerLink="/projects/details/{{ project[0].id }}"><img src="/assets/img/logo-button.png" alt=""></button>
 </main>

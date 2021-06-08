@@ -1,0 +1,150 @@
+.input-category {
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 5px solid #f0f0f0;
+    padding: 20px 40px;
+  }
+  
+  .input-category .mat-card-title {
+    font-weight: bold;
+  }
+  
+  .input-category.projects form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .inputinho input {
+    width: 770px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid #f0f0f0;
+  }
+  
+  .inputinho.-big {
+    align-items: flex-start;
+  }
+  
+  .inputinho .description {
+    height: 80px;
+  }
+  
+  .total {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+  
+  .total p {
+    font-size: 20px;
+    color: #858585;
+  }
+  
+  .total .total-box {
+    width: 207px;
+    height: 50px;
+    border-radius: 5px;
+    border: 3px solid #f0f0f0;
+  }
+  
+  .skills-employees {
+      display: flex;
+  }
+  
+  .skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+  }
+  
+  .skills .selects {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  
+  .skills .selects .select {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 150px;
+      border-radius: 10px;
+      height: 30px;
+      background-color: #6e00f5;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 10px;
+      padding-left: 10px;
+      margin-right: 20px;
+  }
+  
+  .skills .selects .select input {
+      width: 1.3em;
+      height: 1.3em;
+      background-color: white;
+      border-radius: 50%;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+      margin-right: 10px;
+  }
+  
+  .skills .selects .select input:checked {
+      background-color: #05c46b;
+  }
+  
+  .employees {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 40%;
+  }
+  
+  .employees form .role {
+      margin-top: 20px;
+  }
+  
+  .employees form .role input {
+      margin-right: 10px;
+      width: 50px;
+      border-radius: 5px;
+      border: 1px solid #858585;
+  }
+  
+  .div-conclude {
+      display: flex;
+      justify-content: flex-end;
+  }
+  
+  .conclude {
+    color: #fff;
+    height: 50px;
+    width: 170px;
+    white-space: normal;
+    line-height: 17px;
+    margin-bottom: 50px;
+    background-color: #6e00f5;
+    margin-left: auto;
+    transition: all linear 0.2s;
+  }
+  
+  .conclude:hover {
+      background-color: #4b00a7;
+      transform: scale(1.02);
+  }

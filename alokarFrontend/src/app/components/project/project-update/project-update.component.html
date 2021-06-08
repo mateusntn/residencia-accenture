@@ -1,21 +1,25 @@
 <mat-card class="input-category -projects">
     <mat-card-title>Projeto</mat-card-title>
-    <form method="POST">
+    <form>
         <div class="inputinho">
             <label for="">Nome do Projeto:</label>
             <input matInput [(ngModel)]="project.nome" name="nome">
+            
         </div>
         <div class="inputinho">
             <label for="">Nome da Empresa:</label>
             <input matInput [(ngModel)]="project.nomeEmpresa" name="nomeEmpresa">
+            
         </div>
         <div class="inputinho">
             <label for="">Área do Projeto:</label>
             <input matInput [(ngModel)]="project.area" name="area">
+            
         </div>
         <div class="inputinho">
             <label for="">Duração do Projeto:</label>
             <input matInput [(ngModel)]="project.duracao" name="duracao">
+            
         </div>
         <div class="inputinho">
             <label for="">Status do Projeto:</label>
@@ -24,6 +28,7 @@
         <div class="inputinho -big">
             <label for="">Descrição do Projeto:</label>
             <input matInput [(ngModel)]="project.descricao" name="descricao" class="description">
+            
         </div>
     </form>
 </mat-card>
@@ -134,5 +139,5 @@
     </div>
 </mat-card>
 <div class="div-conclude">
-    <button mat-raised-button (click)="createProject()" class="conclude">CONCLUIR</button>
+    <button mat-raised-button (click)="updateProject()" class="conclude">CONCLUIR</button>
 </div>

@@ -7,14 +7,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.selectable import Select
 from marshmallow_sqlalchemy import SQLAlchemySchema
 from marshmallow import fields
+from flask_cors import CORS
 import yaml
 import json
 
 app = Flask(__name__)
-
+CORS(app)
 
 # Configure DB
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:doninha20@localhost/mydb"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:7890@localhost/alokar"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_CURSORCLASS'] = "DictCursor"
 
@@ -81,7 +82,7 @@ class Cargo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(45), nullable=False, index=True)
 
-    funcionarios = db.relationship('Funcionario', backref='cargos')
+    
 
 
 class CargoSchema(SQLAlchemySchema):
@@ -105,6 +106,7 @@ class Funcionario(db.Model):
     habilidades = db.relationship("Habilidade", secondary="funcionarios_habilidades")
     projetos = db.relationship("Projeto", secondary="funcionarios_projetos")
     usuarios = db.relationship("Usuario", back_populates="funcionarios")
+    cargo = db.relationship('Cargo', backref='funcionarios')
 
 class FuncionarioSchema(SQLAlchemySchema):
     class Meta(SQLAlchemySchema.Meta):
@@ -117,6 +119,7 @@ class FuncionarioSchema(SQLAlchemySchema):
     disponibilidade = fields.String(required=True)
     custoHora_overtime = fields.String(required=True)
     cargo_id = fields.Number(required=True)
+    cargo = fields.String(required=True)
     
 
 class Usuario(db.Model):
@@ -156,7 +159,7 @@ class Funcionario_habilidadeSchema(SQLAlchemySchema):
         model = Funcionario_habilidade
         sqla_session = db.session
     funcionarios_id = fields.Number(dump_only=True)
-    funcionarios_cargo_id = fields.Number(dump_only=True)   
+    habilidades_id = fields.Number(dump_only=True)   
     tempoExperiencia= fields.String(required=True)
 
 class Funcionario_projeto(db.Model):
@@ -207,7 +210,7 @@ def projects():
     projects_schema = ProjectSchema(many=True)
     projects = projects_schema.dump(projetos)
     
-    return make_response(jsonify({'projects': projects}))
+    return make_response(jsonify(projects))
     
 
 
@@ -216,93 +219,97 @@ def project_id(id):
     projeto = Projeto.query.filter_by(id=id)
     project_schema = ProjectSchema(many=True)
     project_id = project_schema.dump(projeto)
-    return make_response(jsonify({'project_id': project_id}))
+    
+    return make_response(jsonify(project_id))
 
     
 @app.route('/projects/<int:id>', methods=['PUT'])
 def edit_project(id):
-    projeto = Projeto.query.filter_by(id=id)
-    project_schema = ProjectSchema(many=True)
-    project_id = project_schema.dump(projeto)
+    projetos = Projeto()
+    nome = request.json['nome']
+    custoPrevisto = request.json['custoPrevisto']
+    area = request.json['area']
+    descricao = request.json['descricao']
+    otherCost = request.json['otherCost']
+    hardware = request.json['hardware']
+    licenca = request.json['licenca']
+    duracao = request.json['duracao']
+    status = request.json['status']
+    seatCharge = request.json['seatCharge']
+    nomeEmpresa = request.json['nomeEmpresa']
+    projeto = Projeto.query.get(id)
+
+    if not projeto:
+        return jsonify({'message':'nao existe'}), 404
 
     try:
-        if ('nome' in projeto):
-            projeto.nome = request.form['nome']
-        if ('custoPrevisto' in projeto):
-            projeto.custoPrevisto = request.form['custoPrevisto']
-        if ('custoPrevisto' in projeto):
-            projeto.area = request.form['custoPrevisto']
-        if ('descricao' in projeto):
-            projeto.descricao = request.form['descricao']
-        if ('otherCost' in projeto):
-            projeto.otherCost = request.form['otherCost']
-        if ('hardware' in projeto):
-            projeto.hardware = request.form['hardware']
-        if ('licenca' in projeto):
-            projeto.licenca = request.form['licenca']
-        if ('duracao' in projeto):
-            projeto.duracao = request.form['duracao']
-        if ('status' in projeto):
-            projeto.status = request.form['status']
-        if ('seatCharge' in projeto):
-            projeto.seatCharge = request.form['seatCharge']
-        if ('nomeEmpresa' in projeto):
-            projeto.nomeEmpresa = request.form['nomeEmpresa']
-
-        db.session.add(projeto)
+        
+        projeto.nome = nome
+        projeto.custoPrevisto = custoPrevisto
+        projeto.area = area
+        projeto.descricao = descricao
+        projeto.otherCost = otherCost
+        projeto.hardware = hardware
+        projeto.licenca = licenca
+        projeto.duracao = duracao
+        projeto.status = status
+        projeto.seatCharge = seatCharge
+        projeto.nomeEmpresa = nomeEmpresa
         db.session.commit()
+        return jsonify({'message:':'Deu bom!'}), 201
 
     except:
         return 'Não foi possível realizar a ação!'
 
-    return make_response(jsonify({'project_id': project_id}))
+    
 
 
 
-@app.route('/new_project', methods=['GET', 'POST'])
+@app.route('/new_project', methods=['POST'])
 def new_project():
-
-    skills = Habilidade.query.all()
-    skills_schema = HabilidadeSchema(many=True)
-    habilidades = skills_schema.dump(skills)
-    skill = Habilidade.query.filter_by(id=id)
-    skill_schema = HabilidadeSchema(many=True)
-    habilidade = skill_schema.dump(skill)
-
-    funcoes = Cargo.query.all()
-    funcoes_schema = CargoSchema(many=True)
-    fun = funcoes_schema.dump(funcoes)
 
     if request.method == 'POST':
         projetos = Projeto()
-        projetos.nome = request.form['nome']
-        projetos.custoPrevisto = request.form['custoPrevisto']
-        projetos.area = request.form['area']
-        projetos.descricao = request.form['descricao']
-        projetos.otherCost = request.form['otherCost']
-        projetos.hardware = request.form['hardware']
-        projetos.licenca = request.form['licenca']
-        projetos.duracao = request.form['duracao']
-        projetos.status = request.form['status']
-        projetos.seatCharge = request.form['seatCharge']
-        projetos.nomeEmpresa = request.form['nomeEmpresa']
-        
+        projetos.nome = request.json['nome']
+        projetos.custoPrevisto = request.json['custoPrevisto']
+        projetos.area = request.json['area']
+        projetos.descricao = request.json['descricao']
+        projetos.otherCost = request.json['otherCost']
+        projetos.hardware = request.json['hardware']
+        projetos.licenca = request.json['licenca']
+        projetos.duracao = request.json['duracao']
+        projetos.status = request.json['status']
+        projetos.seatCharge = request.json['seatCharge']
+        projetos.nomeEmpresa = request.json['nomeEmpresa']
         
         db.session.add(projetos)
         db.session.commit()
+
+
+    return make_response(jsonify({'message:':'Deu bom!'}))
+
+
         
     
 
-    return make_response(jsonify({'skills': habilidades}, {'funcoes': fun}, {'skill': skill}))
+    
 
-@app.route('/allocation')
+@app.route('/employees')
 def allocation():
-    funcionarios = Funcionario.query.all()
+    funcionarios = Funcionario.query.join(Cargo, Cargo.id == Funcionario.cargo_id)
     funcionarios_schema = FuncionarioSchema(many=True)
     employees = funcionarios_schema.dump(funcionarios)
     
 
-    return make_response(jsonify({'funcionarios': employees}))
+    return make_response(jsonify(employees))
+
+@app.route('/fh')
+def fh(): 
+    funcionario_habilidade = Funcionario_habilidade.query.all()
+    f_h_schema = Funcionario_habilidadeSchema(many=True)
+    fh = f_h_schema = f_h_schema.dump(funcionario_habilidade)
+
+    return make_response(jsonify(fh))
 
 
 @app.route('/allocation/<int:id>')
@@ -311,7 +318,15 @@ def employee_id(id):
     funcionario_schema = FuncionarioSchema(many=True)
     employee = funcionario_schema.dump(funcionario)
 
-    return make_response(jsonify({'funcionario': employee}))
+    return make_response(jsonify(employee))
+
+@app.route('/skills')
+def skills():
+    skills = Habilidade.query.all()
+    skills_schema = HabilidadeSchema(many=True)
+    habilidades = skills_schema.dump(skills)
+
+    return make_response(jsonify(habilidades))
 
 
 if __name__ == '__main__':

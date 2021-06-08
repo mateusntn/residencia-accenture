@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectCrudComponent } from './views/project-crud/project-crud.component';
 import { ProjectReadComponent } from './components/project/project-read/project-read.component';
 import { HomeComponent } from './views/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -21,23 +20,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ProjectUpdateComponent } from './components/project/project-update/project-update.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavComponent,
-    ProjectCrudComponent,
+    NavComponent,   
     ProjectReadComponent,
     HomeComponent,
     DashboardComponent,
     ProjectCreateComponent,
     ProjectDetailsComponent,
-    ProjectAllocationComponent
+    ProjectAllocationComponent,
+    ProjectUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +53,11 @@ import { MatInputModule } from '@angular/material/input';
     MatSnackBarModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

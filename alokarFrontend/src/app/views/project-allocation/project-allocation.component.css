@@ -95,6 +95,10 @@ p {
     width: 30%;
 }
 
+.profile i {
+    width: 100px;
+}
+
 .option .employee .profile img {
     border-radius: 50%;
     margin-right: 10px;

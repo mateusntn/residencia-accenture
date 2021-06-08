@@ -1,3 +1,39 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filters form {
+    display: flex;
+    align-items: center;
+}
+
+.filters form i {
+    margin-left: 5px;
+    color: #788286;
+    cursor: pointer;
+}
+
+.filters button {
+    margin-left: 10px;
+}   
+  
+.add-project {
+    color: #fff;
+    height: 50px;
+    width: 170px;
+    white-space: normal;
+    line-height: 17px;
+    background-color: #6e00f5;
+}
+  
+.add-project:hover {
+    background-color: #4b00a7;
+    transform: scale(1.02);
+    transition: all linear 0.2s;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
