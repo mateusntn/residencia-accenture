@@ -58,6 +58,8 @@
         <img src="/img/banco-de-dados2.png" alt="imagem do data import" height="250px">
         <li> Na próxima tela, clicar em "Start import" </li>
         <img src="/img/banco-de-dados3.png" alt="imagem do data import" height="250px">
+        <li> No app.py, linha 18, adicionar a configuração do seu banco como na imagem </li>
+        <img src="/img/linha-banco.png" alt="linha 18">
     </ol>
 </div>
 
